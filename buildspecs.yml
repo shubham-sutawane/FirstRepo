@@ -6,13 +6,17 @@ phases:
       - echo "Installing Nginx"
       - sudo yum update -y
       - sudo yum install nginx -y
+
   build:
     commands:
-      - echo "Build started on `date`"
-      - cp index.html /var/www/html/
+      - echo "Build started on $(date)"
+      - sudo mkdir -p /var/www/html/
+      - sudo cp index.html /var/www/html/
+
   post_build:
     commands:
-      - echo "Configuring Nginx"
+      - echo "Nginx configuration complete"
+
 artifacts:
   files:
-    - "**/*"
+    - '**/*'
